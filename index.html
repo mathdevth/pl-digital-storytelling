@@ -136,8 +136,8 @@
             <span class="hidden sm:inline">ตอบ 5 คำถามหลัก</span>
           </button>
           <button onclick="switchTab('present')" id="btn-present" class="tab-btn px-2.5 sm:px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-chalkboard-user"></i>
-            <span class="hidden sm:inline">โหมดนำเสนอ (8-10 นาที)</span>
+            <i class="fa-solid fa-display"></i>
+            <span class="hidden sm:inline">เว็บนำเสนอ (8-10 นาที)</span>
           </button>
           <button onclick="switchTab('quiz')" id="btn-quiz" class="tab-btn px-2.5 sm:px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 flex items-center gap-1.5 transition">
             <i class="fa-solid fa-users"></i>
@@ -145,7 +145,7 @@
           </button>
           <button onclick="switchTab('team')" id="btn-team" class="tab-btn px-2.5 sm:px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 flex items-center gap-1.5 transition">
             <i class="fa-solid fa-user-graduate"></i>
-            <span class="hidden sm:inline">คณะผู้จัดทำ (มน.)</span>
+            <span class="hidden sm:inline">คณะผู้จัดทำ (ม.นเรศวร)</span>
           </button>
           <button onclick="openShareModal()" title="แชร์ QR Code ให้นิสิต/อาจารย์สแกน" class="px-2.5 sm:px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold text-teal-700 bg-teal-50 hover:bg-teal-100 border border-teal-200 flex items-center gap-1.5 transition ml-1">
             <i class="fa-solid fa-qrcode"></i>
@@ -747,244 +747,547 @@
       </div>
     </section>
 
-    <!-- TAB 3: INTERACTIVE SLIDE DECK (8-10 MINUTES PRESENTATION) -->
-    <section id="view-present" class="tab-view hidden space-y-6">
+    <!-- TAB 3: FULL WEB PRESENTATION DECK (8-10 MINUTES RUNTIME) -->
+    <section id="view-present" class="tab-view hidden space-y-8">
       
-      <!-- Presentation Mode Banner -->
-      <div class="bg-gradient-to-r from-slate-900 to-nu-dark text-white rounded-2xl p-6 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-amber-300 mb-2">
-            <i class="fa-solid fa-desktop"></i> Interactive Presentation Engine • มหาวิทยาลัยนเรศวร
-          </div>
-          <h2 class="text-2xl font-bold font-display">โหมดสไลด์นำเสนอ Interactive (8–10 นาที)</h2>
-          <p class="text-sm text-slate-300 mt-1">คลิกเปลี่ยนสไลด์ได้ หรือใช้ปุ่มลูกศรซ้าย/ขวา พร้อมตัวจับเวลาและโพยบทพูดผู้บรรยายสำหรับนิสิต</p>
+      <!-- Top Presentation Master Bar -->
+      <div class="bg-gradient-to-r from-slate-900 via-nu-dark to-slate-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800 relative overflow-hidden">
+        <div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none">
+          <i class="fa-solid fa-chalkboard text-[180px]"></i>
         </div>
-        
-        <!-- Live Presentation Timer Widget -->
-        <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 text-center min-w-[220px]">
-          <span class="text-xs font-semibold uppercase text-slate-300 block mb-1">ตัวจับเวลาซ้อมนำเสนอ</span>
-          <div id="timer-display" class="text-3xl font-mono font-bold tracking-wider text-white">00:00</div>
-          <div class="flex justify-center gap-2 mt-3">
-            <button onclick="toggleTimer()" id="btn-timer-toggle" class="px-3 py-1 bg-brand-500 hover:bg-brand-600 text-xs font-bold rounded-md shadow transition">
-              <i class="fa-solid fa-play mr-1"></i> เริ่มจับเวลา
-            </button>
-            <button onclick="resetTimer()" class="px-2 py-1 bg-white/20 hover:bg-white/30 text-xs font-semibold rounded-md transition">
-              <i class="fa-solid fa-rotate-left"></i> รีเซ็ต
+
+        <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-amber-300 border border-white/15">
+              <i class="fa-solid fa-display"></i> Interactive Web Presentation Deck • เวลาบรรยาย 8–10 นาที
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold font-display leading-tight">
+              การจัดการเรียนรู้เฉพาะบุคคลด้วย <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">Digital Storytelling</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+              งานวิจัย Kaminskienė & Khetsuriani (2019) • เชื่อมโยง Table 1 (Zhang et al., 2020) สู่คณิตศาสตร์ศึกษา มหาวิทยาลัยนเรศวร
+            </p>
+          </div>
+
+          <!-- Quick Presentation Utility Suite -->
+          <div class="flex flex-wrap items-center gap-3 bg-white/5 backdrop-blur-md p-3.5 rounded-2xl border border-white/10">
+            <!-- Live Presentation Stopwatch Pill -->
+            <div class="flex items-center gap-3 bg-slate-900/80 px-3.5 py-2 rounded-xl border border-white/10">
+              <div>
+                <span class="text-[10px] uppercase text-slate-400 font-semibold block leading-none">เวลาบรรยาย</span>
+                <span id="timer-display" class="text-xl font-mono font-bold text-amber-300 leading-tight">00:00</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button onclick="toggleTimer()" id="btn-timer-toggle" class="px-2.5 py-1 bg-brand-600 hover:bg-brand-500 text-white text-[11px] font-bold rounded-lg transition shadow-sm" title="เริ่ม/พัก ตัวจับเวลา">
+                  <i class="fa-solid fa-play"></i>
+                </button>
+                <button onclick="resetTimer()" class="px-2 py-1 bg-white/10 hover:bg-white/20 text-slate-300 text-[11px] font-semibold rounded-lg transition" title="รีเซ็ตเวลา">
+                  <i class="fa-solid fa-rotate-left"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Fullscreen Presentation View Button -->
+            <button onclick="togglePresentationFullscreen()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-semibold flex items-center gap-2 transition" title="ขยายเต็มหน้าจอเพื่อนำเสนอบนจอโปรเจกเตอร์">
+              <i class="fa-solid fa-expand text-amber-400"></i>
+              <span class="hidden sm:inline">เต็มหน้าจอ</span>
             </button>
           </div>
-          <span id="timer-status" class="text-[11px] text-amber-300 block mt-2">เป้าหมาย: 8:00 - 10:00 นาที</span>
         </div>
       </div>
 
-      <!-- Slide Navigation Control Bar -->
-      <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-2">
-          <button onclick="prevSlide()" class="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-chevron-left"></i> สไลด์ก่อนหน้า
-          </button>
-          <span class="text-xs font-semibold text-slate-500">
-            สไลด์ <span id="current-slide-num" class="text-brand-600 font-bold text-sm">1</span> จาก 5
+      <!-- Sticky Chapter Navigation Pill Bar -->
+      <div class="sticky top-20 z-30 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 p-2 shadow-md">
+        <div class="flex items-center gap-1.5 overflow-x-auto py-1 px-1 scrollbar-none text-xs font-semibold">
+          <span class="text-slate-400 text-[11px] uppercase tracking-wider px-2 font-bold whitespace-nowrap">
+            <i class="fa-solid fa-list-ol mr-1 text-brand-600"></i> ลำดับนำเสนอ:
           </span>
-          <button onclick="nextSlide()" class="px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm">
-            สไลด์ถัดไป <i class="fa-solid fa-chevron-right"></i>
+          <button onclick="scrollToPresentChapter('p-ch1')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-700 whitespace-nowrap transition flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded-full bg-brand-600 text-white text-[10px] flex items-center justify-center font-bold">1</span> ที่มา & ปัญหา
           </button>
-        </div>
-
-        <!-- Slide Indicator Dots -->
-        <div class="flex items-center gap-1.5">
-          <button onclick="goToSlide(1)" class="slide-dot w-7 h-7 rounded-lg text-xs font-bold bg-brand-600 text-white">1</button>
-          <button onclick="goToSlide(2)" class="slide-dot w-7 h-7 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">2</button>
-          <button onclick="goToSlide(3)" class="slide-dot w-7 h-7 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">3</button>
-          <button onclick="goToSlide(4)" class="slide-dot w-7 h-7 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">4</button>
-          <button onclick="goToSlide(5)" class="slide-dot w-7 h-7 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200">5</button>
-        </div>
-
-        <!-- Speaker Notes Toggle -->
-        <div>
-          <button onclick="toggleSpeakerNotes()" id="btn-toggle-notes" class="px-3 py-1.5 rounded-lg border border-amber-200 bg-amber-50 text-brand-800 hover:bg-amber-100 text-xs font-bold flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-note-sticky"></i> ซ่อน/แสดง โพยบทพูด
+          <button onclick="scrollToPresentChapter('p-ch2')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-700 whitespace-nowrap transition flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded-full bg-brand-600 text-white text-[10px] flex items-center justify-center font-bold">2</span> ข้อมูลผู้เรียน & Me+Togetherness
+          </button>
+          <button onclick="scrollToPresentChapter('p-ch3')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-700 whitespace-nowrap transition flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded-full bg-brand-600 text-white text-[10px] flex items-center justify-center font-bold">3</span> กรอบ Table 1 (Group A2)
+          </button>
+          <button onclick="scrollToPresentChapter('p-ch4')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-700 whitespace-nowrap transition flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded-full bg-brand-600 text-white text-[10px] flex items-center justify-center font-bold">4</span> ข้อค้นพบ & เสียงสะท้อน นร.
+          </button>
+          <button onclick="scrollToPresentChapter('p-ch5')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-700 whitespace-nowrap transition flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded-full bg-brand-600 text-white text-[10px] flex items-center justify-center font-bold">5</span> ข้อจำกัดงานวิจัย
+          </button>
+          <button onclick="scrollToPresentChapter('p-ch6')" class="px-3 py-1.5 rounded-xl bg-brand-600 text-white whitespace-nowrap transition flex items-center gap-1.5 shadow-sm">
+            <span class="w-4 h-4 rounded-full bg-white text-brand-600 text-[10px] flex items-center justify-center font-bold">6</span> การประยุกต์สู่คณิตศาสตร์ ม.นเรศวร
           </button>
         </div>
       </div>
 
-      <!-- Slide View Container -->
-      <div id="slide-container" class="relative bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-md min-h-[420px] flex flex-col justify-between">
-        
-        <!-- Slide 1 -->
-        <div id="slide-1" class="slide-content space-y-4 block">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+      <!-- PRESENTATION CHAPTER 1: THE PROBLEM & CONTEXT -->
+      <article id="p-ch1" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 scroll-mt-36">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-brand-50 text-brand-700 font-bold flex items-center justify-center text-lg shadow-sm">
+              01
+            </div>
             <div>
-              <span class="text-xs font-bold uppercase text-brand-600 tracking-wider">Slide 1 of 5 (1.5 นาที)</span>
-              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 mt-0.5">บทนำ: ปัญหา บริบท และเป้าหมายการวิจัย</h3>
-            </div>
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800">0:00 - 1:30 นาที</span>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="font-bold text-slate-800 text-sm block mb-1">ปัญหาที่พบ (The Problem)</span>
-              ห้องเรียนเดิมใช้แนวทาง One-size-fits-all ครูเป็นศูนย์กลาง เด็กขาดความผูกพันและรู้สึกว่าตำราเรียนน่าเบื่อ
-            </div>
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="font-bold text-slate-800 text-sm block mb-1">บริบทงานวิจัย (Context)</span>
-              นักเรียนเกรด 8 (ม.2) ในประเทศลิทัวเนีย วิชาภาษาอังกฤษ ภายใต้หัวข้อ "My Dream School" ผ่านสื่อดิจิทัล
-            </div>
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="font-bold text-slate-800 text-sm block mb-1">เป้าหมาย (Objective)</span>
-              ศึกษาการเปลี่ยนผ่านสู่ Personalised Learning โดยบูรณาการ ICT เพื่อเสริมสร้าง Learner Agency
+              <span class="text-[11px] font-bold text-brand-600 uppercase tracking-wider block">บทที่ 1 • ช่วงเวลา 0:00 - 1:30 นาที</span>
+              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900">ปัญหาเดิม บริบท และเป้าหมายการวิจัย</h3>
             </div>
           </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+            <i class="fa-solid fa-stopwatch text-brand-500"></i> ~1.5 นาที
+          </span>
+        </div>
 
-          <div class="speaker-notes p-4 rounded-xl bg-amber-50/90 border border-amber-200 text-xs text-amber-950 space-y-1">
-            <span class="font-bold flex items-center gap-1.5 text-amber-900"><i class="fa-solid fa-microphone-lines"></i> โพยบทพูดแนะนำสำหรับผู้บรรยาย:</span>
-            <p class="leading-relaxed">
-              "สวัสดีอาจารย์และเพื่อนๆ ทุกท่านครับ พวกเรานิสิตปริญญาโท สาขาวิชาคณิตศาสตร์ศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร วันนี้จะมานำเสนอบทวิเคราะห์งานวิจัยของ Kaminskienė & Khetsuriani (2019) ในหัวข้อ Personalisation of Learning through Digital Storytelling ซึ่งศึกษาในนักเรียนเกรด 8 วิชาภาษาอังกฤษ เพื่อแก้ปัญหาห้องเรียนแบบเดิมที่เน้นการถ่ายทอดทางเดียว โดยเปลี่ยนผ่านสู่การเรียนรู้เฉพาะบุคคลที่ให้เด็กเป็นผู้สร้างสรรค์เรื่องราวโรงเรียนในฝันของตนเองครับ"
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Card 1 -->
+          <div class="p-5 rounded-2xl bg-rose-50/60 border border-rose-200 space-y-2.5">
+            <div class="w-9 h-9 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-base">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm">ปัญหาเดิม (The Challenge)</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              ห้องเรียนระบบดั้งเดิมสอนแบบ <strong>One-size-fits-all</strong> ครูเป็นผู้สั่งการผูกขาดความรู้ นักเรียนเป็นผู้รับสารอย่างเฉื่อยชา (Passive Consumers) ทำให้รู้สึกน่าเบื่อและขาดความเชื่อมโยงกับชีวิตจริง
             </p>
+            <div class="p-2.5 rounded-xl bg-white border border-rose-200 text-[11px] text-rose-900 font-medium italic">
+              "I think books are a bit boring..." (เสียงสะท้อนนักเรียน R1)
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="p-5 rounded-2xl bg-indigo-50/60 border border-indigo-200 space-y-2.5">
+            <div class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-base">
+              <i class="fa-solid fa-school"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm">บริบทผู้เรียน (Research Context)</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              ศึกษาใน <strong>นักเรียนเกรด 8 (ม.2 อายุ 13–14 ปี)</strong> ในประเทศลิทัวเนีย ในรายวิชา <strong>ภาษาอังกฤษ (English Language Workshops)</strong> ภายใต้หัวข้อโครงงานสร้างสรรค์ <strong>"My Dream School"</strong>
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1 text-[11px]">
+              <span class="px-2 py-0.5 rounded bg-white text-indigo-800 font-semibold border border-indigo-100">มัธยมศึกษาตอนต้น</span>
+              <span class="px-2 py-0.5 rounded bg-white text-indigo-800 font-semibold border border-indigo-100">มัลติมีเดียเวิร์กช็อป</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200 space-y-2.5">
+            <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-base">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm">เป้าหมายหลัก (Core Purpose)</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              ศึกษาว่าการนำ <strong>ICT + Digital Storytelling</strong> มาบูรณาการเชิงครุศาสตร์ จะช่วยขับเคลื่อนการจัดการเรียนรู้เฉพาะบุคคล (Personalised Learning) และส่งเสริมบทบาทผู้เรียนให้เป็นผู้ร่วมสร้าง (Co-creators) ได้อย่างไร
+            </p>
+            <div class="p-2.5 rounded-xl bg-white border border-emerald-200 text-[11px] text-emerald-800 font-medium">
+              เปลี่ยนครูจาก "ผู้ควบคุม" สู่ <strong>"Facilitator / Coach"</strong>
+            </div>
           </div>
         </div>
 
-        <!-- Slide 2 -->
-        <div id="slide-2" class="slide-content space-y-4 hidden">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div>
-              <span class="text-xs font-bold uppercase text-brand-600 tracking-wider">Slide 2 of 5 (2.5 นาที)</span>
-              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 mt-0.5">ข้อมูลผู้เรียน & กลยุทธ์การปรับเปลี่ยน (วิเคราะห์ Q2, Q3)</h3>
-            </div>
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800">1:30 - 4:00 นาที</span>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-              <span class="font-bold text-slate-800 text-sm block">ข้อมูลผู้เรียนที่เก็บ (Learner Profile)</span>
-              <ul class="list-disc pl-4 space-y-1 text-slate-600">
-                <li>ทักษะเฉพาะตัว: ความถนัดการเขียนบท vs. ไอซีทีตัดต่อ vs. การพูด</li>
-                <li>ความสนใจและความหลงใหลเฉพาะบุคคล (Passions)</li>
-                <li>บันทึกสะท้อนคิดรายคาบ (Weekly Written Feedback)</li>
-              </ul>
-            </div>
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-              <span class="font-bold text-slate-800 text-sm block">การปรับเปลี่ยนการจัดการเรียนรู้</span>
-              <ul class="list-disc pl-4 space-y-1 text-slate-600">
-                <li><strong>Role Differentiation:</strong> จัดบทบาทในทีมตามจุดแข็ง (ตัวอย่าง R2: ชอบเขียนบท)</li>
-                <li><strong>Learner Autonomy:</strong> ให้อิสระเลือกโครงเรื่องและซอฟต์แวร์</li>
-                <li><strong>Teacher as Facilitator:</strong> ครูคอยโค้ชและให้ On-demand Feedback</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="speaker-notes p-4 rounded-xl bg-amber-50/90 border border-amber-200 text-xs text-amber-950 space-y-1">
-            <span class="font-bold flex items-center gap-1.5 text-amber-900"><i class="fa-solid fa-microphone-lines"></i> โพยบทพูดแนะนำสำหรับผู้บรรยาย:</span>
-            <p class="leading-relaxed">
-              "ในส่วนของข้อมูลผู้เรียน งานนี้ไม่ได้ใช้ข้อสอบสถิติ แต่สำรวจจุดแข็งและความชอบของนักเรียนแต่ละคน แล้วนำมาจัดสรรบทบาทในกลุ่มย่อย (Role-based assignment) อย่างยืดหยุ่น เช่น นักเรียน R2 ที่ชอบเขียนแต่ไม่ถนัดคอมพิวเตอร์ ก็รับหน้าที่ร่างสคริปต์ ส่วนเพื่อนที่ถนัด ICT รับหน้าที่ตัดต่อวิดีโอ ครูทำหน้าที่เป็น Facilitator คอยซัพพอร์ตเมื่อกลุ่มต้องการความช่วยเหลือครับ"
-            </p>
+        <!-- 3 Data Triangulation sources -->
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <span class="font-bold text-slate-800 flex items-center gap-2">
+            <i class="fa-solid fa-diagram-project text-brand-600"></i> ระเบียบวิธีสอบทานข้อมูล 3 ด้าน (Triangulation):
+          </span>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 font-medium">1. สังเกตการณ์ในชั้นเรียน</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 font-medium">2. บันทึกสะท้อนคิดรายคาบ (Written Feedback)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 font-medium">3. สนทนากลุ่ม Focus Group 2 กลุ่ม (14 คน)</span>
           </div>
         </div>
+      </article>
 
-        <!-- Slide 3 -->
-        <div id="slide-3" class="slide-content space-y-4 hidden">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+      <!-- PRESENTATION CHAPTER 2: LEARNER DATA & ME + TOGETHERNESS -->
+      <article id="p-ch2" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 scroll-mt-36">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-lg shadow-sm">
+              02
+            </div>
             <div>
-              <span class="text-xs font-bold uppercase text-brand-600 tracking-wider">Slide 3 of 5 (1.5 นาที)</span>
-              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 mt-0.5">การจัดกลุ่มตาม Table 1 (Zhang et al., 2020) (วิเคราะห์ Q4)</h3>
-            </div>
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800">4:00 - 5:30 นาที</span>
-          </div>
-
-          <div class="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 text-xs space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="font-bold text-brand-800 text-sm">การจัดประเภท: Group A2 (Learner preference-based)</span>
-              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">ยืนยันตามกรอบ Table 1</span>
-            </div>
-            <p class="text-slate-700">
-              เปเปอร์นี้จัดอยู่ในกลุ่ม <strong>A2</strong> เนื่องจากเป็นการปรับกระบวนการเรียนรู้ตามความชอบ ความสนใจ ทักษะ และภูมิหลังของผู้เรียน โดยใช้เทคโนโลยีดิจิทัลเป็นเครื่องมือแสดงออก ไม่ใช่ระบบปรับอัตโนมัติด้วย AI (A1) และไม่ใช่ระบบ Mobile GPS (A3)
-            </p>
-            <div class="p-2.5 rounded bg-white border border-indigo-100 text-[11px] text-slate-600 italic">
-              <strong>หลักฐานยืนยันจากหน้า 159:</strong> "each student was assigned a specific role, based on his or her own skills or interests..."
+              <span class="text-[11px] font-bold text-teal-600 uppercase tracking-wider block">บทที่ 2 • ช่วงเวลา 1:30 - 4:00 นาที</span>
+              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900">ข้อมูลผู้เรียน & พลังผสาน "Me + Togetherness"</h3>
             </div>
           </div>
-
-          <div class="speaker-notes p-4 rounded-xl bg-amber-50/90 border border-amber-200 text-xs text-amber-950 space-y-1">
-            <span class="font-bold flex items-center gap-1.5 text-amber-900"><i class="fa-solid fa-microphone-lines"></i> โพยบทพูดแนะนำสำหรับผู้บรรยาย:</span>
-            <p class="leading-relaxed">
-              "เมื่อนำมาวิเคราะห์เปรียบเทียบกับ Table 1 ของ Zhang et al. (2020) งานนี้จัดอยู่ใน <strong>Group A2: Learner preference-based personalization</strong> อย่างชัดเจนครับ เพราะเน้นการตอบสนองความชอบและความถนัดเฉพาะตัว ไม่ได้ใช้ระบบ Adaptive AI แบบ A1 แต่ใช้กลยุทธ์ Pedagogical Personalisation โดยมีหลักฐานในเปเปอร์หน้า 159 ยืนยันเรื่องการมอบหมายบทบาทตามทักษะและความสนใจครับ"
-            </p>
-          </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+            <i class="fa-solid fa-stopwatch text-teal-500"></i> ~2.5 นาที
+          </span>
         </div>
 
-        <!-- Slide 4 -->
-        <div id="slide-4" class="slide-content space-y-4 hidden">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div>
-              <span class="text-xs font-bold uppercase text-brand-600 tracking-wider">Slide 4 of 5 (2.0 นาที)</span>
-              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 mt-0.5">ข้อค้นพบ & ข้อจำกัดสำคัญ (วิเคราะห์ Q5.1, Q5.2)</h3>
-            </div>
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800">5:30 - 7:30 นาที</span>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div class="p-4 rounded-xl bg-emerald-50/60 border border-emerald-100 space-y-1.5">
-              <span class="font-bold text-emerald-800 text-sm block">ข้อค้นพบสำคัญ (Key Findings)</span>
-              <ul class="list-disc pl-4 space-y-1 text-slate-700">
-                <li>Engagement และความตื่นตัวสูงมาก สนุกกว่าหนังสือเรียน (R1, R11)</li>
-                <li>เกิดสำนึกร่วมกัน (Togetherness) และความรับผิดชอบในทีม (R12)</li>
-                <li>ความภาคภูมิใจในตนเอง (Self-efficacy) สูงขึ้นอย่างชัดเจน (R1, R13)</li>
-              </ul>
-            </div>
-            <div class="p-4 rounded-xl bg-rose-50/60 border border-rose-100 space-y-1.5">
-              <span class="font-bold text-rose-800 text-sm block">ข้อจำกัดของงานวิจัย (Limitations)</span>
-              <ul class="list-disc pl-4 space-y-1 text-slate-700">
-                <li>เวลาในคาบเรียนไม่พอสำหรับงานตัดต่อที่ละเอียด</li>
-                <li>กลุ่มใหญ่สื่อสารลำบาก (เด็กสะท้อนว่า 2-3 คนดีที่สุด)</li>
-                <li>เป็นกรณีศึกษาห้องเดียว ไม่มีกลุ่มควบคุม และยังไม่ได้วัดคะแนนสอบ</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="speaker-notes p-4 rounded-xl bg-amber-50/90 border border-amber-200 text-xs text-amber-950 space-y-1">
-            <span class="font-bold flex items-center gap-1.5 text-amber-900"><i class="fa-solid fa-microphone-lines"></i> โพยบทพูดแนะนำสำหรับผู้บรรยาย:</span>
-            <p class="leading-relaxed">
-              "ผลลัพธ์พบว่า นักเรียนมี Engagement สูงมาก รู้สึกสนุกและภูมิใจกับคลิปวิดีโอที่ตนเองสร้างขึ้น เกิดความรู้สึก Togetherness ในการช่วยกันทำงาน อย่างไรก็ตาม มีข้อจำกัดเรื่องเวลาที่กระชั้นชิด ขนาดกลุ่มที่เด็กสะท้อนว่า 2-3 คนเหมาะสมที่สุด และในทางระเบียบวิธีวิจัยยังขาดการวัดผลสัมฤทธิ์ทางการเรียนเชิงตัวเลขครับ"
-            </p>
-          </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div id="slide-5" class="slide-content space-y-4 hidden">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div>
-              <span class="text-xs font-bold uppercase text-brand-600 tracking-wider">Slide 5 of 5 (2.0 นาที)</span>
-              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 mt-0.5">การเชื่อมโยงสู่การสอนคณิตศาสตร์ & สรุปผล (วิเคราะห์ Q5.3)</h3>
-            </div>
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">7:30 - 9:30 นาที</span>
-          </div>
-
-          <div class="p-4 rounded-xl bg-teal-50/60 border border-teal-200 text-xs space-y-2">
-            <span class="font-bold text-teal-900 text-sm block">การประยุกต์สู่การศึกษาคณิตศาสตร์ (Mathematics Education Connection)</span>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700">
-              <div class="bg-white p-2.5 rounded-lg border border-teal-100">
-                <strong>1. Math Digital Storytelling:</strong> เล่าเรื่องโจทย์ปัญหาชีวิตจริง เช่น ผังเมืองเรขาคณิตหรืองบประมาณคาเฟ่
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- 4 Qualitative Data Dimensions -->
+          <div class="space-y-3">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i class="fa-solid fa-id-card-clip text-brand-600"></i> ข้อมูล 4 ด้านเกี่ยวกับผู้เรียนที่ใช้ปรับการเรียนรู้
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <span class="font-bold text-slate-800 block text-xs">1. ทักษะเฉพาะบุคคล (Skills)</span>
+                <p class="text-slate-600 text-[11px]">สำรวจว่าเด็กคนใดถนัดเขียนบท คนใดถนัดใช้คอมพิวเตอร์ตัดต่อ หรือคนใดถนัดการวาดภาพและออกแบบ</p>
               </div>
-              <div class="bg-white p-2.5 rounded-lg border border-teal-100">
-                <strong>2. Role-Based Math Lab:</strong> แบ่งหน้าที่เป็น Math Analyst, Desmos Designer, Narrator, และ Editor
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <span class="font-bold text-slate-800 block text-xs">2. ความชอบและความหลงใหล</span>
+                <p class="text-slate-600 text-[11px]">ความสนใจเฉพาะทาง เช่น งานสถาปัตย์ เทคโนโลยี หรือการอภิปรายโต้เถียง เพื่อเป็นธีมเล่าเรื่อง</p>
               </div>
-              <div class="bg-white p-2.5 rounded-lg border border-teal-100">
-                <strong>3. Preference-based Problems:</strong> ปรับโจทย์ตามความชอบ (กีฬาคำนวณวิถีพาราโบลา, ดนตรีคำนวณความถี่)
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <span class="font-bold text-slate-800 block text-xs">3. จินตนาการส่วนตัว (Vision)</span>
+                <p class="text-slate-600 text-[11px]">ภาพโรงเรียนในอุดมคติที่สะท้อนค่านิยมและความต้องการลึกๆ ของนักเรียนแต่ละคน</p>
               </div>
-              <div class="bg-white p-2.5 rounded-lg border border-teal-100">
-                <strong>4. ลด Math Anxiety:</strong> อัดคลิปสะท้อนคิดอธิบายจุดที่เคยเข้าใจผิด เสริมสร้าง Self-efficacy
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <span class="font-bold text-slate-800 block text-xs">4. บันทึกสะท้อนคิดรายคาบ</span>
+                <p class="text-slate-600 text-[11px]">ฟีดแบ็กความรู้สึก อุปสรรค และระดับการมีส่วนร่วมหลังจบแต่ละสัปดาห์</p>
               </div>
             </div>
           </div>
 
-          <div class="speaker-notes p-4 rounded-xl bg-amber-50/90 border border-amber-200 text-xs text-amber-950 space-y-1">
-            <span class="font-bold flex items-center gap-1.5 text-amber-900"><i class="fa-solid fa-microphone-lines"></i> โพยบทพูดแนะนำสำหรับผู้บรรยาย:</span>
-            <p class="leading-relaxed">
-              "สุดท้ายนี้ ในฐานะนิสิตปริญญาโทสาขาคณิตศาสตร์ศึกษา มหาวิทยาลัยนเรศวร เราสามารถนำแนวคิดนี้มาทำ <em>Math Digital Storytelling</em> โดยให้นักเรียนทำคลิปแก้โจทย์ปัญหาชีวิตจริง แบ่งบทบาทในทีมตามความถนัด และให้นักเรียนทำคลิปสะท้อนคิดเพื่อลดความกลัวคณิตศาสตร์ (Math Anxiety) ซึ่งจะช่วยสร้างทั้งความเข้าใจเชิงมโนทัศน์และความมั่นใจให้แก่ผู้เรียนครับ กลุ่มของพวกเราขอจบการนำเสนอเพียงเท่านี้ ขอบพระคุณครับ"
+          <!-- Synergy Model Me + Togetherness -->
+          <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 space-y-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 block">The Pedagogical Formula</span>
+              <h4 class="font-bold text-slate-900 text-base mt-0.5">สูตรสำเร็จ: "Me" + "Togetherness" + "Facilitator"</h4>
+              <p class="text-xs text-slate-700 mt-2 leading-relaxed">
+                การเรียนรู้เฉพาะบุคคลไม่ได้แปลว่าให้นักเรียนนั่งทำคนเดียวหน้าจอคอมพิวเตอร์อย่างโดดเดี่ยว แต่งานวิจัยนี้จัดให้ดึงตัวตน (<strong>"Me"</strong>) มาเติมเต็มเป้าหมายของทีม (<strong>"Togetherness"</strong>)
+              </p>
+            </div>
+
+            <!-- Empirical Role Differentiation Quote Box -->
+            <div class="p-4 rounded-xl bg-white border border-amber-300 shadow-sm space-y-2 text-xs">
+              <div class="flex items-center gap-2 text-amber-900 font-bold">
+                <i class="fa-solid fa-quote-left text-brand-600"></i>
+                <span>ตัวอย่างเชิงประจักษ์: การแบ่งบทบาทตามจุดแข็ง (นร. R2)</span>
+              </div>
+              <p class="text-slate-700 italic text-[11px] leading-relaxed">
+                "ฉันชอบการเขียนมาก จึงรับหน้าที่เขียนบทของโรงเรียนในฝัน แล้วปรินต์มาคุยกับเพื่อนในกลุ่ม ส่วนเรื่องคอมพิวเตอร์ฉันไม่ค่อยเก่ง เพื่อนที่ถนัดจึงเป็นคนจัดการในคอมพิวเตอร์แทน" (นร. R2)
+              </p>
+              <div class="text-[10px] text-slate-500 text-right font-medium">
+                — สัมภาษณ์เชิงลึกหน้า 159 (Kaminskienė & Khetsuriani, 2019)
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRESENTATION CHAPTER 3: TABLE 1 CLASSIFICATION (ZHANG ET AL., 2020) -->
+      <article id="p-ch3" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 scroll-mt-36">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-700 font-bold flex items-center justify-center text-lg shadow-sm">
+              03
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-indigo-600 uppercase tracking-wider block">บทที่ 3 • ช่วงเวลา 4:00 - 5:30 นาที</span>
+              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900">การจัดกลุ่มตาม Table 1 (Zhang et al., 2020)</h3>
+            </div>
+          </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+            <i class="fa-solid fa-stopwatch text-indigo-500"></i> ~1.5 นาที
+          </span>
+        </div>
+
+        <div class="space-y-4">
+          <div class="p-4 rounded-2xl bg-brand-50 border border-brand-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="text-[11px] font-bold text-brand-800 uppercase tracking-wide block">ผลการวิเคราะห์การจัดประเภท</span>
+              <h4 class="text-lg font-bold text-slate-900 font-display">จัดอยู่ในกลุ่ม A2: Learner preference-based personalization</h4>
+              <p class="text-xs text-slate-600 mt-0.5">การปรับการเรียนตามความชอบ ความสนใจ ทักษะ และพื้นหลังของผู้เรียน</p>
+            </div>
+            <span class="px-3 py-1.5 rounded-xl bg-brand-600 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 self-start sm:self-auto">
+              <i class="fa-solid fa-circle-check"></i> Group A2 ชัดเจน
+            </span>
+          </div>
+
+          <!-- 4 Categories Comparison Matrix -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <!-- A1 -->
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 opacity-75 space-y-1.5">
+              <div class="flex items-center justify-between font-bold text-slate-600">
+                <span>A1: Adaptive Tech</span>
+                <span class="text-rose-500"><i class="fa-solid fa-xmark"></i> ไม่ใช่</span>
+              </div>
+              <p class="text-[11px] text-slate-500 leading-relaxed">
+                ระบบคอมพิวเตอร์ตรวจข้อสอบอัตโนมัติ แล้วใช้อัลกอริทึม AI ปรับความยากข้อสอบ (งานวิจัยนี้ไม่มีระบบคอมพิวเตอร์ประเมินอัตโนมัติ)
+              </p>
+            </div>
+
+            <!-- A2 (Target) -->
+            <div class="p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-400 space-y-1.5 shadow-sm">
+              <div class="flex items-center justify-between font-bold text-emerald-900">
+                <span>A2: Preference-based</span>
+                <span class="text-emerald-600"><i class="fa-solid fa-check"></i> ใช่แน่นอน</span>
+              </div>
+              <p class="text-[11px] text-emerald-900 leading-relaxed font-medium">
+                จัดสรรบทบาทตามจุดแข็ง มอบอิสระในการเลือกเนื้อหาและสื่อตามความถนัดของตนเองอย่างยืดหยุ่น
+              </p>
+            </div>
+
+            <!-- A3 -->
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 opacity-75 space-y-1.5">
+              <div class="flex items-center justify-between font-bold text-slate-600">
+                <span>A3: Ubiquitous / Mobile</span>
+                <span class="text-rose-500"><i class="fa-solid fa-xmark"></i> ไม่ใช่</span>
+              </div>
+              <p class="text-[11px] text-slate-500 leading-relaxed">
+                ระบบการเรียนรู้ผ่านมือถืออิงตามพิกัดสถานที่จริงและบริบทภายนอกห้องเรียน (งานนี้ทำในห้องเวิร์กช็อป)
+              </p>
+            </div>
+
+            <!-- A4 -->
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 opacity-75 space-y-1.5">
+              <div class="flex items-center justify-between font-bold text-slate-600">
+                <span>A4: Non-adaptive LMS</span>
+                <span class="text-rose-500"><i class="fa-solid fa-xmark"></i> ไม่ใช่</span>
+              </div>
+              <p class="text-[11px] text-slate-500 leading-relaxed">
+                เป็นเพียงระบบจัดเก็บเอกสารหรือแขวนสไลด์ เช่น Moodle ทั่วไปโดยไม่มีการปรับบทบาทเชิงครุศาสตร์
+              </p>
+            </div>
+          </div>
+
+          <!-- Empirical Paper Citations (3 Evidences) -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+            <span class="font-bold text-slate-800 block text-xs uppercase tracking-wide">
+              <i class="fa-solid fa-book-bookmark text-brand-600 mr-1"></i> หลักฐานคำต่อคำยืนยัน Group A2 จากเปเปอร์ต้นฉบับ:
+            </span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-[11px] text-slate-600 font-serif italic">
+              <div class="p-2.5 rounded-lg bg-white border border-slate-200">
+                <strong>หลักฐาน 1 (หน้า 159):</strong> "each student was assigned a specific role, based on his or her own skills or interests..."
+              </div>
+              <div class="p-2.5 rounded-lg bg-white border border-slate-200">
+                <strong>หลักฐาน 2 (หน้า 155):</strong> "Personalised learning honours and acknowledges the unique gifts, skills and passions of each learner..."
+              </div>
+              <div class="p-2.5 rounded-lg bg-white border border-slate-200">
+                <strong>หลักฐาน 3 (หน้า 160):</strong> "freedom of choice is important in developing learners' motivation..."
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRESENTATION CHAPTER 4: EMPIRICAL FINDINGS & STUDENT VOICES -->
+      <article id="p-ch4" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 scroll-mt-36">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center text-lg shadow-sm">
+              04
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider block">บทที่ 4 • ช่วงเวลา 5:30 - 7:30 นาที</span>
+              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900">ข้อค้นพบเชิงประจักษ์ & เสียงสะท้อนของนักเรียน</h3>
+            </div>
+          </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+            <i class="fa-solid fa-stopwatch text-emerald-500"></i> ~2.0 นาที
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <!-- Result 1 -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 flex flex-col justify-between">
+            <div>
+              <span class="w-8 h-8 rounded-xl bg-orange-100 text-orange-700 font-bold flex items-center justify-center text-sm mb-2">
+                <i class="fa-solid fa-fire"></i>
+              </span>
+              <h4 class="font-bold text-slate-900 text-sm">1. Engagement สูงมาก</h4>
+              <p class="text-slate-600 text-[11px] mt-1 leading-relaxed">
+                นักเรียนตื่นตัวและผูกพันกับกิจกรรม สนุกกับการค้นคว้าสื่อดิจิทัลมากกว่าการเปิดตำราเรียน
+              </p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white border border-slate-200 text-[11px] text-slate-700 italic mt-3">
+              "ชอบโปรเจกต์นี้เพราะแปลกใหม่ ได้จินตนาการ และการใช้คอมพิวเตอร์สร้างสรรค์มาก" (นร. R11)
+            </div>
+          </div>
+
+          <!-- Result 2 -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 flex flex-col justify-between">
+            <div>
+              <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 font-bold flex items-center justify-center text-sm mb-2">
+                <i class="fa-solid fa-hands-holding-circle"></i>
+              </span>
+              <h4 class="font-bold text-slate-900 text-sm">2. พลัง Togetherness</h4>
+              <p class="text-slate-600 text-[11px] mt-1 leading-relaxed">
+                เกิดการรับฟังและพยุงเพื่อนเมื่อหมดแรง ช่วยสร้างความรับผิดชอบร่วมกันในชิ้นงานกลุ่ม
+              </p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white border border-slate-200 text-[11px] text-slate-700 italic mt-3">
+              "ฉันได้เรียนรู้การรับฟังเพื่อนในกลุ่ม และเห็นว่าบางคนรู้เรื่องหนึ่งดีกว่าอีกคน" (นร. R12, R10)
+            </div>
+          </div>
+
+          <!-- Result 3 -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 flex flex-col justify-between">
+            <div>
+              <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-sm mb-2">
+                <i class="fa-solid fa-comments"></i>
+              </span>
+              <h4 class="font-bold text-slate-900 text-sm">3. สื่อสารอังกฤษจริง</h4>
+              <p class="text-slate-600 text-[11px] mt-1 leading-relaxed">
+                กล้าพูดภาษาอังกฤษเพื่อนำเสนอผลงานวิดีโอของตนเองในบริบทจริงนอกเหนือจากการท่องจำ
+              </p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white border border-slate-200 text-[11px] text-slate-700 italic mt-3">
+              "ได้ฟังการพรีเซนต์ภาษาอังกฤษและพัฒนาทักษะการสื่อสารของตนเองอย่างชัดเจน" (นร. R7)
+            </div>
+          </div>
+
+          <!-- Result 4 -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 flex flex-col justify-between">
+            <div>
+              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-sm mb-2">
+                <i class="fa-solid fa-medal"></i>
+              </span>
+              <h4 class="font-bold text-slate-900 text-sm">4. ความภูมิใจ & Efficacy</h4>
+              <p class="text-slate-600 text-[11px] mt-1 leading-relaxed">
+                เกิด Self-efficacy รู้สึกภาคภูมิใจกับวิดีโอที่สร้าง และมองเห็นพลังของจินตนาการสู่อนาคต
+              </p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white border border-slate-200 text-[11px] text-slate-700 italic mt-3">
+              "เปรียบเหมือน Jules Verne ฝันถึงเรือดำน้ำ และ 150 ปีต่อมาก็มีเรือดำน้ำจริง" (นร. R13)
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRESENTATION CHAPTER 5: LIMITATIONS -->
+      <article id="p-ch5" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 scroll-mt-36">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-rose-50 text-rose-700 font-bold flex items-center justify-center text-lg shadow-sm">
+              05
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-rose-600 uppercase tracking-wider block">บทที่ 5 • ข้อจำกัดและข้อควรคำนึง</span>
+              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900">ข้อจำกัดของงานวิจัยที่ต้องระมัดระวัง</h3>
+            </div>
+          </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+            <i class="fa-solid fa-triangle-exclamation text-rose-500"></i> Critical Reflection
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-1.5">
+            <strong class="font-bold text-slate-900 block text-xs">1. ข้อจำกัดด้านเวลา (Time)</strong>
+            <p class="text-slate-600 text-[11px] leading-relaxed">
+              เวลาในคาบเรียนไม่เพียงพอต่อการตัดต่อ ค้นคว้าสื่อ และเขียนบทที่ประณีต ทำให้เด็กต้องเร่งรีบในบางขั้นตอน
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-1.5">
+            <strong class="font-bold text-slate-900 block text-xs">2. ขนาดกลุ่มที่เหมาะสม</strong>
+            <p class="text-slate-600 text-[11px] leading-relaxed">
+              กลุ่มขนาด 4–5 คนขึ้นไปสื่อสารยาก นักเรียนสะท้อน (R1) ว่าขนาดที่ดีที่สุดคือ <strong>2–3 คน</strong>
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-1.5">
+            <strong class="font-bold text-slate-900 block text-xs">3. รูปแบบ Case Study</strong>
+            <p class="text-slate-600 text-[11px] leading-relaxed">
+              เป็นกรณีศึกษาในห้องเรียนเดียว ไม่มีกลุ่มควบคุม (No Control Group) จึงอ้างอิงเชิงสถิติทั่วไปไม่ได้
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-1.5">
+            <strong class="font-bold text-slate-900 block text-xs">4. ขาดคะแนนผลสัมฤทธิ์</strong>
+            <p class="text-slate-600 text-[11px] leading-relaxed">
+              ยังไม่ได้ทำการวัดคะแนนสอบวิชาการเชิงตัวเลข และยังขาดการประเมินภาระงานจากมุมมองครูผู้สอน
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRESENTATION CHAPTER 6: MATHEMATICS EDUCATION BLUEPRINT -->
+      <article id="p-ch6" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 scroll-mt-36">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-brand-50 text-brand-700 font-bold flex items-center justify-center text-lg shadow-sm">
+              06
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-brand-600 uppercase tracking-wider block">บทที่ 6 • ช่วงเวลา 7:30 - 9:30 นาที • ไฮไลต์สาขา</span>
+              <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900">พิมพ์เขียวสู่การจัดการเรียนรู้คณิตศาสตร์ศึกษา (ม.นเรศวร)</h3>
+            </div>
+          </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-brand-100 text-brand-800">
+            <i class="fa-solid fa-graduation-cap"></i> นิสิต กศ.ม. มหาวิทยาลัยนเรศวร
+          </span>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-brand-500/10 border border-brand-200 text-xs text-slate-700">
+          <strong>วิสัยทัศน์การประยุกต์:</strong> นิสิตปริญญาโท สาขาวิชาคณิตศาสตร์ศึกษา คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร เสนอการนำแนวคิดนี้มาเปลี่ยน <em>"คณิตศาสตร์นามธรรม"</em> ให้กลายเป็น <em>"สถานการณ์จริงที่สนุกและมีคุณค่า"</em> ผ่าน 4 เสาหลัก:
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- Pillar 1 -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center gap-2 text-brand-700 font-bold text-sm">
+              <i class="fa-solid fa-video"></i>
+              <span>1. Math Digital Storytelling (แก้โจทย์ชีวิตจริง)</span>
+            </div>
+            <p class="text-slate-600 text-[11px] leading-relaxed">
+              ให้นักเรียนสร้างคลิปสั้นแก้ปัญหาชีวิตจริง เช่น <strong>"ภารกิจสร้างผังเมืองรักษ์โลกด้วยเรขาคณิตและมาตราส่วน"</strong> หรือ <strong>"การวางแผนงบประมาณเปิดร้านคาเฟ่ด้วยระบบสมการเชิงเส้น"</strong> เพื่อให้เด็กเห็นคุณค่าที่แท้จริงของคณิตศาสตร์
+            </p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center gap-2 text-teal-700 font-bold text-sm">
+              <i class="fa-solid fa-people-group"></i>
+              <span>2. Role-Based Math Lab (4 บทบาทตามจุดแข็ง)</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-700 pt-1">
+              <div class="p-2 rounded-lg bg-white border border-slate-200">
+                <strong class="text-brand-700 block">Math Analyst:</strong> คำนวณสูตรและพิสูจน์
+              </div>
+              <div class="p-2 rounded-lg bg-white border border-slate-200">
+                <strong class="text-teal-700 block">GeoGebra Modeler:</strong> สร้างกราฟและโมเดล 3D
+              </div>
+              <div class="p-2 rounded-lg bg-white border border-slate-200">
+                <strong class="text-indigo-700 block">Story Narrator:</strong> เขียนบทผูกบริบทชีวิต
+              </div>
+              <div class="p-2 rounded-lg bg-white border border-slate-200">
+                <strong class="text-amber-700 block">Media Producer:</strong> ตัดต่อวิดีโอและกราฟิก
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center gap-2 text-indigo-700 font-bold text-sm">
+              <i class="fa-solid fa-heart-pulse"></i>
+              <span>3. Preference Contextualization (ปรับโจทย์ตามความชอบ)</span>
+            </div>
+            <p class="text-slate-600 text-[11px] leading-relaxed">
+              ผู้เรียนที่ชอบ <strong>กีฬา</strong> คำนวณวิถีพาราโบลาจากลูกฟุตบอล; ผู้เรียนที่ชอบ <strong>ดนตรี</strong> คำนวณความถี่และเศษส่วนของตัวโน้ต; ผู้เรียนที่ชอบ <strong>เกม</strong> คำนวณค่าคาดหมาย (Expected Value) สุ่มไอเทม
+            </p>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
+              <i class="fa-solid fa-brain"></i>
+              <span>4. Metacognition ลด Math Anxiety (ความกลัวคณิตศาสตร์)</span>
+            </div>
+            <p class="text-slate-600 text-[11px] leading-relaxed">
+              ให้นักเรียนอัดคลิปสะท้อนคิด <em>"My Math Journey"</em> เล่าถึงจุดที่ตนเคยเข้าใจผิด (Misconception) และวิธีที่เอาชนะความยาก ช่วยลดความเครียด สร้างความมั่นใจ (Math Self-Efficacy) และพัฒนา Growth Mindset
             </p>
           </div>
         </div>
 
-      </div>
+        <!-- Presentation Closing Banner -->
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-slate-900 to-nu-dark text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="space-y-1 text-center sm:text-left">
+            <h4 class="font-bold text-base font-display text-amber-300">บทสรุปส่งท้ายสำหรับการนำเสนอ</h4>
+            <p class="text-xs text-slate-300 leading-relaxed font-light">
+              "เทคโนโลยีไม่ใช่เพียงเครื่องมือแสดงผล แต่คือสะพานที่เปิดโอกาสให้ความถนัดของเด็กทุกคน (Me) ได้เปล่งประกายร่วมกับเพื่อนในห้องเรียน (Togetherness)"
+            </p>
+          </div>
+          <button onclick="switchTab('quiz')" class="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs whitespace-nowrap transition shadow-md flex items-center gap-1.5">
+            <span>ไปสู่กิจกรรมทดสอบ</span> <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </article>
+
     </section>
 
     <!-- TAB 4: INTERACTIVE PARTICIPANT LAB (QUIZ & ROLE MATCHER) -->
@@ -1370,80 +1673,26 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Slide Navigation Controls
-    let currentSlide = 1;
-    const totalSlides = 5;
-
-    function goToSlide(slideNum) {
-      if (slideNum < 1 || slideNum > totalSlides) return;
-      currentSlide = slideNum;
-
-      // Hide all slides
-      for (let i = 1; i <= totalSlides; i++) {
-        const slideEl = document.getElementById(`slide-${i}`);
-        if (slideEl) {
-          slideEl.classList.add('hidden');
-          slideEl.classList.remove('block');
-        }
-      }
-
-      // Show target slide
-      const targetSlideEl = document.getElementById(`slide-${currentSlide}`);
-      if (targetSlideEl) {
-        targetSlideEl.classList.remove('hidden');
-        targetSlideEl.classList.add('block');
-      }
-
-      // Update Slide Number Display
-      const numDisplay = document.getElementById('current-slide-num');
-      if (numDisplay) numDisplay.innerText = currentSlide;
-
-      // Update Indicator Dots
-      const dots = document.querySelectorAll('.slide-dot');
-      dots.forEach((dot, idx) => {
-        if (idx + 1 === currentSlide) {
-          dot.className = 'slide-dot w-7 h-7 rounded-lg text-xs font-bold bg-brand-600 text-white';
-        } else {
-          dot.className = 'slide-dot w-7 h-7 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200';
-        }
-      });
-    }
-
-    function nextSlide() {
-      if (currentSlide < totalSlides) {
-        goToSlide(currentSlide + 1);
+    // Presentation Mode Smooth Scrolling to Chapters
+    function scrollToPresentChapter(chapterId) {
+      const target = document.getElementById(chapterId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
 
-    function prevSlide() {
-      if (currentSlide > 1) {
-        goToSlide(currentSlide - 1);
-      }
-    }
-
-    let notesVisible = true;
-    function toggleSpeakerNotes() {
-      notesVisible = !notesVisible;
-      document.querySelectorAll('.speaker-notes').forEach(el => {
-        if (notesVisible) {
-          el.classList.remove('hidden');
-        } else {
-          el.classList.add('hidden');
-        }
-      });
-    }
-
-    // Keyboard Arrow Navigation
-    window.addEventListener('keydown', (e) => {
-      const presentView = document.getElementById('view-present');
-      if (presentView && !presentView.classList.contains('hidden')) {
-        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-          nextSlide();
-        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-          prevSlide();
+    // Fullscreen Mode Toggle for Presentation
+    function togglePresentationFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch((err) => {
+          showToast('ไม่สามารถเข้าสู่โหมดเต็มหน้าจอได้บนเบราว์เซอร์นี้');
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
         }
       }
-    });
+    }
 
     // Live Presentation Stopwatch
     let timerInterval = null;
@@ -1459,33 +1708,28 @@
     function toggleTimer() {
       const btn = document.getElementById('btn-timer-toggle');
       const display = document.getElementById('timer-display');
-      const status = document.getElementById('timer-status');
 
       if (!isTimerRunning) {
         isTimerRunning = true;
-        btn.innerHTML = '<i class="fa-solid fa-pause mr-1"></i> หยุดชั่วคราว';
-        btn.className = 'px-3 py-1 bg-amber-500 hover:bg-amber-600 text-xs font-bold rounded-md shadow transition text-white';
+        if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
 
         timerInterval = setInterval(() => {
           secondsElapsed++;
-          display.innerText = formatTime(secondsElapsed);
+          if (display) display.innerText = formatTime(secondsElapsed);
 
           // Change colors based on target presentation time
-          if (secondsElapsed >= 480 && secondsElapsed <= 600) { // 8 - 10 mins
-            display.className = 'text-3xl font-mono font-bold tracking-wider text-emerald-400';
-            status.innerText = 'อยู่ในช่วงเวลาเป้าหมาย (8:00 - 10:00 นาที)';
-            status.className = 'text-[11px] text-emerald-300 block mt-2 font-semibold';
-          } else if (secondsElapsed > 600) { // Over 10 mins
-            display.className = 'text-3xl font-mono font-bold tracking-wider text-rose-400 animate-pulse';
-            status.innerText = 'เกินเวลา 10 นาทีแล้ว ควรเร่งสรุป!';
-            status.className = 'text-[11px] text-rose-300 block mt-2 font-bold';
+          if (display) {
+            if (secondsElapsed >= 480 && secondsElapsed <= 600) { // 8 - 10 mins
+              display.className = 'text-xl font-mono font-bold text-emerald-400';
+            } else if (secondsElapsed > 600) { // Over 10 mins
+              display.className = 'text-xl font-mono font-bold text-rose-400 animate-pulse';
+            }
           }
         }, 1000);
       } else {
         isTimerRunning = false;
         clearInterval(timerInterval);
-        btn.innerHTML = '<i class="fa-solid fa-play mr-1"></i> เดินต่อ';
-        btn.className = 'px-3 py-1 bg-brand-500 hover:bg-brand-600 text-xs font-bold rounded-md shadow transition text-white';
+        if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
       }
     }
 
@@ -1495,14 +1739,12 @@
       secondsElapsed = 0;
       const display = document.getElementById('timer-display');
       const btn = document.getElementById('btn-timer-toggle');
-      const status = document.getElementById('timer-status');
 
-      display.innerText = '00:00';
-      display.className = 'text-3xl font-mono font-bold tracking-wider text-white';
-      btn.innerHTML = '<i class="fa-solid fa-play mr-1"></i> เริ่มจับเวลา';
-      btn.className = 'px-3 py-1 bg-brand-500 hover:bg-brand-600 text-xs font-bold rounded-md shadow transition text-white';
-      status.innerText = 'เป้าหมาย: 8:00 - 10:00 นาที';
-      status.className = 'text-[11px] text-slate-300 block mt-2';
+      if (display) {
+        display.innerText = '00:00';
+        display.className = 'text-xl font-mono font-bold text-amber-300';
+      }
+      if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
     }
 
     // Interactive Quiz Logic
